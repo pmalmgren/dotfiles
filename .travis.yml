@@ -3,6 +3,6 @@ services:
   - docker
 script:
   - make build
-  - echo $DOCKER_PASSWORD | docker login -u "$DOCKER_USERNAME" --password-stdin "https://$CONTAINER_REGISTRY"
+  - echo $DOCKER_PASSWORD | docker login -u "$DOCKER_USERNAME" --password-stdin "https://$CONTAINER_HOST"
   - docker tag cloud-dev $CONTAINER_REGISTRY/cloud-dev
   - docker push $CONTAINER_REGISTRY/cloud-dev
