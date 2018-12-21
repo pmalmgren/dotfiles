@@ -1,14 +1,14 @@
-# My Cloud Development Environment
+# My Containerized Software Development Environment
 
-I use this for software development on my iPad.
+All of my dotfiles, a Dockerfile, and a Makefile for building and running my development environment.
 
-## Running from Docker
+## Running in Docker
 
 The Makefile should take care of everything for you. It exposes the following arguments:
 
   - `PERSISTENT_PATH` - this is the full path of the directory on your machine (or cloud VM) that you want to mount into the Docker container
   - `PERSISTENT_DIR` - the directory, relative to `USERNAME`'s home directory, to mount the `PERSISTENT_PATH`
-  - `USERNAME` - the username
+  - `USERNAME` - the username and home directory to launch the development shell with
 
 ```
 $ make run SSH_DIR=~/.ssh USERNAME=me PERSISTENT_PATH=$(cwd)/persistent
