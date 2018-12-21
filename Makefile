@@ -1,4 +1,4 @@
-.PHONY: run build test
+.PHONY: run build test stow
 
 current_dir=$(shell pwd)
 PERSISTENT_PATH=$(current_dir)/persistent
@@ -13,7 +13,7 @@ build:
 	docker build . -t cloud-dev:latest --build-arg username=$(USERNAME)
 
 stow:
-	cd dotfiles; stow zsh --target=$(HOME); stow nvim --target=$(HOME); stow oh-my-zsh --target=$(HOME); stow tmux --target=$(HOME)
+	cd dotfiles; stow zsh --target=$(HOME); stow nvim --target=$(HOME); stow tmux --target=$(HOME)
 
 test:
 	echo $(HOME)
