@@ -1,4 +1,4 @@
-.PHONY: run build test stow
+.PHONY: run build stow
 
 current_dir=$(shell pwd)
 PERSISTENT_PATH=$(current_dir)/persistent
@@ -14,6 +14,3 @@ build:
 
 stow:
 	cd dotfiles; stow zsh --target=$(HOME); stow nvim --target=$(HOME); stow tmux --target=$(HOME)
-
-test:
-	echo $(HOME)
