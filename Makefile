@@ -12,5 +12,8 @@ run:
 build:
 	docker build . -t cloud-dev:latest --build-arg username=$(USERNAME)
 
+stow2:
+	cd $(DOTFILE_DIR); ls -la | grep ^d | awk '{ print $$9 }' | grep -v '\.\+' | xargs stow
+
 stow:
 	cd dotfiles; stow zsh --target=$(HOME); stow nvim --target=$(HOME); stow tmux --target=$(HOME)
