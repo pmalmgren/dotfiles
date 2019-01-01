@@ -20,12 +20,13 @@ I use tmux, zsh, and neovim for development, so this configuration is somewhat g
 
 ## godot configuration
 
-`godot` configuration starts with a second level heading named `godot configuration`. `godot` will ignore anything in the top section, so feel free to add any documentation here.
+Check out [https://github.com/pmalmgren/godot](godot) which builds Docker images directly from Dotfile repositories.
 
 ```
 username: godot
 dotfile-directory: dotfiles
 entrypoint: zsh
+image-tag: peter-development
 
 packages:
   - neovim
