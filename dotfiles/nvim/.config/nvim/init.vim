@@ -28,22 +28,26 @@ Plug 'ervandew/supertab'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'ambv/black'
+Plug 'fisadev/vim-isort'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+" Required for operations modifying multiple buffers like rename.
 
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ }
 
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+au BufNewFile,BufRead *.js, *.html, *.css, *.yaml, *.yml set tabstop=2 softtabstop=2 shiftwidth=2
+
+au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent fileformat=unix
 
 autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
@@ -57,6 +61,11 @@ let NERDTreeShowHidden=1
 
 " Automatically reload on save
 au BufWritePost *.hs InteroReload
+
+" Run black and isort on save
+au BufWritePost *.py execute ':Black'
+au BufWritePost *.py execute ':Isort'
+let g:black_virtualenv = "~/.virtualenvs/nvim-language-server/"
 
 " Lookup the type of expression under the cursor
 au FileType haskell nmap <silent> <leader>t <Plug>InteroGenericType
@@ -110,8 +119,6 @@ let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
-
-
 
 " Ctrl-{hjkl} for navigating out of terminal panes
 tnoremap <C-h> <C-\><C-n><C-w>h
