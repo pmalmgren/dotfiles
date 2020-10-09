@@ -20,7 +20,7 @@ I use tmux, zsh, and neovim for development, so this configuration is somewhat g
 
 ## godot configuration
 
-Check out [https://github.com/pmalmgren/godot](godot) which builds Docker images directly from Dotfile repositories.
+Check out [godot](https://github.com/pmalmgren/godot) which builds Docker images directly from Dotfile repositories.
 
 ```
 username: godot
